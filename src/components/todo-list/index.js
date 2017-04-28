@@ -9,7 +9,7 @@ function TodoList(props) {
     <div className="todo">
       <input type="text" placeholder="Add Todo" />
       <ul>
-        {todos.map(todo => <li key={todo.id}><Todo todo={todo} /></li>)}
+        {todos.map(todo => <li key={todo.get("id")}><Todo todo={todo} /></li>)}
       </ul>
     </div>
   );
