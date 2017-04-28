@@ -1,9 +1,8 @@
+import "react-hot-loader/patch";
 import React from "react";
 import { render } from "react-dom";
+
+//import { AppContainer } from "react-hot-loader";
 import { TodoList } from "./components/todos";
 
-const todos = [
-  { id: 0, isDone: true, text: "make components" }
-];
-
-render(<TodoList todos={todos} />, document.getElementById("app"));
+render(<TodoList />, document.getElementById("app"));
