@@ -6,6 +6,9 @@ import { TodoList } from "./src/components";
 import reducer from "./src/reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
+import injectTapEventPlugin from "react-tap-event-plugin";
+
+injectTapEventPlugin();
 
 class App extends Component {
   configureStore() {
