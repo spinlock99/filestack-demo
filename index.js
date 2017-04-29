@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import { TodoList } from "./src/components";
-import { List, Map } from "immutable";
+import reducer from "./src/reducer";
 
 class App extends Component {
+  configureStore() {
+    const store = createStore(reducer);
+    if (module.hot) {
+      module.hot.accept("./src/reducer", () => {
+        const nextRootReducer = require("./src/reducer");
+        store.replaceReducer(nextRootReducer);
+      });
+    }
+    return store;
+  }
   render() {
-    const todos = List([
-      Map({ id: 0, isDone: true, text: "make components" }),
-      Map({ id: 1, isDone: false, text: "design actions" }),
-      Map({ id: 2, isDone: false, text: "implement reducer" }),
-      Map({ id: 3, isDone: false, text: "connect components" })
-    ]);
-
-    return <TodoList todos={todos} />;
+    return <Provider store={this.configureStore()}><TodoList /></Provider>;
   }
 }
 
