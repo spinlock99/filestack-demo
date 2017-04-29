@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Todo } from "../todo";
 import { addTodo, toggleTodo } from "../../actions";
+import { Todo } from "../todo";
+import TextField from "material-ui/TextField";
+
 
 export const TodoList = connect(
   function mapStateToProps(state) {
@@ -25,14 +27,10 @@ export const TodoList = connect(
 
   return (
     <div className="todo">
-      <input type="text" placeholder="Add Todo" onKeyDown={handleKeyDown} />
-      <ul>
-        {todos.map(todo =>
-          <li key={todo.get("id")} onClick={handleClick(todo.get("id"))}>
-            <Todo todo={todo} />
-          </li>
-        )}
-      </ul>
+      <TextField hintText="Add Todo" fullWidth={true} onKeyDown={handleKeyDown} />
+      {todos.map(todo =>
+        <Todo key={todo.get("id")} todo={todo} handleClick={handleClick(todo.get("id"))} />
+      )}
     </div>
   );
 });

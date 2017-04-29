@@ -4,6 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { TodoList } from "./src/components";
 import reducer from "./src/reducer";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class App extends Component {
   configureStore() {
@@ -17,7 +18,13 @@ class App extends Component {
     return store;
   }
   render() {
-    return <Provider store={this.configureStore()}><TodoList /></Provider>;
+    return(
+      <Provider store={this.configureStore()}>
+        <MuiThemeProvider>
+          <TodoList />
+        </MuiThemeProvider>
+      </Provider>
+    );
   }
 }
 
