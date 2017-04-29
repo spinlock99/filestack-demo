@@ -13,27 +13,22 @@ export const TodoList = connect(
       toggleTodo: id => dispatch(toggleTodo(id))
     };
   }
-)(function ({ todos, toggleTodo, addTodo }) {
-  const onSubmit = event => {
-    const input = event.target;
-    const text = input.value;
-    const isEnterKey = (event.which == 13);
-    const isLongEnough = text.length > 0;
+)(({ todos, toggleTodo, addTodo }) => {
+  const handleClick = id => event => toggleTodo(id);
+  const handleKeyDown = event => {
+    // eject if the key press is not return or the value is empty
+    if (event.which !== 13 || event.target.value.length <= 0) { return null };
 
-    if (isEnterKey && isLongEnough) {
-      input.value = '';
-      addTodo(text);
-    }
+    addTodo(event.target.value);
+    event.target.value = '';
   };
-
-  const toggleClick = id => event => toggleTodo(id);
 
   return (
     <div className="todo">
-      <input type="text" placeholder="Add Todo" onKeyDown={onSubmit} />
+      <input type="text" placeholder="Add Todo" onKeyDown={handleKeyDown} />
       <ul>
         {todos.map(todo =>
-          <li key={todo.get("id")} onClick={toggleClick(todo.get("id"))}>
+          <li key={todo.get("id")} onClick={handleClick(todo.get("id"))}>
             <Todo todo={todo} />
           </li>
         )}
