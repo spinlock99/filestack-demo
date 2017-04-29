@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { TodoList } from "./src/components";
 import reducer from "./src/reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import AppBar from "material-ui/AppBar";
 
 class App extends Component {
   configureStore() {
@@ -18,10 +19,14 @@ class App extends Component {
     return store;
   }
   render() {
+    const icon = "muidocs-icon-navigation-expand-more";
     return(
       <Provider store={this.configureStore()}>
         <MuiThemeProvider>
-          <TodoList />
+          <div>
+            <AppBar title="Todo PWA" iconClassNameRight={icon} zDepth={1}/>
+            <TodoList />
+          </div>
         </MuiThemeProvider>
       </Provider>
     );

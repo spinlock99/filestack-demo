@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { addTodo, toggleTodo } from "../../actions";
 import { Todo } from "../todo";
+import Divider from "material-ui/Divider";
+import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 
 
@@ -26,11 +28,16 @@ export const TodoList = connect(
   };
 
   return (
-    <div className="todo">
-      <TextField hintText="Add Todo" fullWidth={true} onKeyDown={handleKeyDown} />
-      {todos.map(todo =>
-        <Todo key={todo.get("id")} todo={todo} handleClick={handleClick(todo.get("id"))} />
-      )}
-    </div>
+    <Paper>
+      <div style={{ padding: "20px" }}>
+        <TextField hintText="Add Todo" fullWidth={true} onKeyDown={handleKeyDown} />
+        {todos.map(todo =>
+          <div style={{ margin: "20px 0 20px 0" }} key={todo.get("id")}>
+            <Todo  todo={todo} handleClick={handleClick(todo.get("id"))} />
+            <Divider />
+          </div>
+        )}
+      </div>
+    </Paper>
   );
 });
