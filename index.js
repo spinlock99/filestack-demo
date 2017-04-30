@@ -6,9 +6,17 @@ import { TodoList } from "./src/components";
 import reducer from "./src/reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
-import injectTapEventPlugin from "react-tap-event-plugin";
 
-injectTapEventPlugin();
+import injectTapEventPlugin from "react-tap-event-plugin";
+if (!window.INJECT_TAP_EVENT) {
+  window.INJECT_TAP_EVENT = true;
+  injectTapEventPlugin();
+}
+
+import runtime from "serviceworker-webpack-plugin/lib/runtime";
+if("serviceWorker" in navigator) {
+  const registration = runtime.register();
+}
 
 class App extends Component {
   configureStore() {
