@@ -1,6 +1,6 @@
 var serviceWorkerOption = {
   "assets": [
-    "/bundle.js"
+    "/todo-pwa/bundle.js"
   ]
 };
         
