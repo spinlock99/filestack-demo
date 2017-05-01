@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/docs";
+/******/ 	__webpack_require__.p = "/todo-pwa/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 249);
@@ -24530,7 +24530,7 @@ should be injected by the application.'
 /* 248 */
 /***/ (function(module, exports) {
 
-var serviceWorkerOption = {"scriptURL":"/todo-pwa/sw.js"};
+var serviceWorkerOption = {"scriptURL":"/sw.js"};
       "use strict";
 
 Object.defineProperty(exports, "__esModule", {

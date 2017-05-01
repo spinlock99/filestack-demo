@@ -1,5 +1,3 @@
-console.log("webpack.prod.js");
-
 var path = require("path");
 var ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -9,7 +7,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "docs"),
     filename: "bundle.js",
-    publicPath: "/docs"
+    publicPath: "/todo-pwa/"
   },
   module: {
     loaders: [{
@@ -24,8 +22,7 @@ module.exports = {
   },
   plugins: [
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
-      publicPath: "/todo-pwa/"
+      entry: path.join(__dirname, 'src/sw.js')
     }),
     new CopyWebpackPlugin([{ from: "index.html" }])
   ]
