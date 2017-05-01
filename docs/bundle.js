@@ -24530,7 +24530,7 @@ should be injected by the application.'
 /* 248 */
 /***/ (function(module, exports) {
 
-var serviceWorkerOption = {"scriptURL":"/sw.js"};
+var serviceWorkerOption = {"scriptURL":"/todo-pwa/sw.js"};
       "use strict";
 
 Object.defineProperty(exports, "__esModule", {
