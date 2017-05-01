@@ -1,6 +1,6 @@
 var serviceWorkerOption = {
   "assets": [
-    "/bundle.js"
+    "/todo-pwa/bundle.js"
   ]
 };
         
@@ -117,6 +117,7 @@ function debug(text, obj) {
   }
   (_console = console).log.apply(_console, _toConsumableArray(logParams));
 }
+console.log("service worker option: ", global.serviceWorkerOption);
 
 var assets = global.serviceWorkerOption.assets;
 
