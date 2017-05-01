@@ -1,6 +1,7 @@
 var path = require("path");
 var ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./index.js",
@@ -26,8 +27,11 @@ module.exports = {
       publicPath: "/todo-pwa/"
     }),
     new CopyWebpackPlugin([
-      { from: "index.html" },
       { from: "manifest.json" }
-    ])
+    ]),
+    new HtmlWebpackPlugin({
+      title: "Todo PWA",
+      template: "src/index.ejs"
+    })
   ]
 };

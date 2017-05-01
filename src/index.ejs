@@ -2,9 +2,9 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link rel="manifest" href="/todo-pwa/manifest.json">
+    <link rel="manifest" href="<%= `${webpackConfig.output.publicPath}manifest.json` %>">
   </head>
   <body>
     <div id="container"></div>
-  <script type="text/javascript" src="/todo-pwa/bundle.js"></script></body>
+  </body>
 </html>
