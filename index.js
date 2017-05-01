@@ -15,10 +15,7 @@ if (!window.INJECT_TAP_EVENT) {
 
 import runtime from "serviceworker-webpack-plugin/lib/runtime";
 if("serviceWorker" in navigator) {
-//  const registration = runtime.register("/todo-pwa/sw.js", { scope: "/todo-pwa" });
-  navigator.serviceWorker.register("/todo-pwa/sw.js", { scope: "/todo-pwa/" })
-  .then(function (reg) { console.log("service worker registered: ", reg); })
-  .catch(function (errro) { console.log("service worker error: ", error); });
+  const registration = runtime.register({ scope: "/todo-pwa" });
 }
 
 class App extends Component {

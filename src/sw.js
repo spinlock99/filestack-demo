@@ -3,6 +3,7 @@ function debug(text, obj) {
   if (!!obj) { logParams = logParams.concat(obj); }
   console.log(...logParams);
 }
+console.log("service worker option: ", global.serviceWorkerOption);
 
 const { assets } = global.serviceWorkerOption;
 const CACHE_NAME = (new Date()).toISOString();
