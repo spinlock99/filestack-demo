@@ -1,17 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import { App } from "./src/app";
+import { initializeMaterialUI, initializeServiceWorker } from "./src/initializers";
 
-import injectTapEventPlugin from "react-tap-event-plugin";
-if (!window.INJECT_TAP_EVENT) {
-  window.INJECT_TAP_EVENT = true;
-  injectTapEventPlugin();
-}
-
-import runtime from "serviceworker-webpack-plugin/lib/runtime";
-if("serviceWorker" in navigator) {
-  const registration = runtime.register();
-}
+initializeMaterialUI();
+initializeServiceWorker();
 
 const containerEl = document.getElementById("container");
 render(<App />, containerEl);
