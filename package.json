@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --env=dev --progress --inline --hot",
-    "build": "webpack --env=prod --progress --profile --colors"
+    "build": "webpack --env=prod --progress --profile --colors",
+    "postbuild": "git add .; git commit --amend; git push origin master"
   }
 }
