@@ -35,3 +35,17 @@ function toggleInRedux(id) {
     payload: id
   };
 }
+
+export function clearTodos() {
+  return dispatch => {
+    db.todos.filter(todo => todo.isDone).delete().then(
+      () => dispatch(clearInRedux())
+    );
+  };
+}
+
+function clearInRedux() {
+  return {
+    type: "CLEAR_TODOS"
+  };
+}

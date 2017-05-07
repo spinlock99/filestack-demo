@@ -1,10 +1,11 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { addTodo, toggleTodo } from "../../actions";
+import { addTodo, toggleTodo, clearTodos } from "../../actions";
 import { Todo } from "../todo";
 import Divider from "material-ui/Divider";
 import Paper from "material-ui/Paper";
+import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 
 
@@ -13,9 +14,9 @@ export const TodoList = connect(
     return { todos: state };
   },
   function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ addTodo, toggleTodo }, dispatch);
+    return bindActionCreators({ addTodo, toggleTodo, clearTodos }, dispatch);
   }
-)(({ todos, toggleTodo, addTodo }) => {
+)(({ todos, toggleTodo, addTodo, clearTodos }) => {
   const handleClick = (id, isDone) => event => toggleTodo(id, isDone);
   const handleKeyDown = event => {
     // eject if the key press is not return or the value is empty
@@ -24,6 +25,7 @@ export const TodoList = connect(
     addTodo(event.target.value);
     event.target.value = '';
   };
+  const handleClear = event => clearTodos();
 
   return (
     <Paper>
@@ -35,6 +37,12 @@ export const TodoList = connect(
             <Divider />
           </div>
         )}
+        <RaisedButton
+          label="Clear"
+          secondary={true}
+          fullWidth={true}
+          onClick={handleClear}
+        />
       </div>
     </Paper>
   );

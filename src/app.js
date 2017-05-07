@@ -3,10 +3,10 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import reducer from "./reducer";
+import db from "./db";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import { TodoList } from "./components";
-import db from "./db";
 
 export class App extends Component {
   configureStore() {

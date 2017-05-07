@@ -14,6 +14,8 @@ export default function(todos=init, action) {
           return todo;
         }
       });
+    case "CLEAR_TODOS":
+      return todos.filterNot(todo => todo.get("isDone"));
     default:
       return todos;
   }
