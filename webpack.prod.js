@@ -1,8 +1,8 @@
 var webpack = require("webpack");
 var path = require("path");
-var ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var OfflinePlugin = require("offline-plugin");
 
 module.exports = {
   entry: "./index.js",
@@ -27,16 +27,13 @@ module.exports = {
       "process.env": { NODE_ENV: JSON.stringify("production") }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
-      publicPath: "/todo-pwa/"
-    }),
     new CopyWebpackPlugin([
       { from: "manifest.json" }
     ]),
     new HtmlWebpackPlugin({
       title: "Todo PWA",
       template: "src/index.ejs"
-    })
+    }),
+    new OfflinePlugin()
   ]
 };

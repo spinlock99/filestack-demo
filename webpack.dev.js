@@ -1,5 +1,6 @@
 var path = require("path");
-var ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
+var OfflinePlugin = require("offline-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./index.js",
@@ -20,8 +21,10 @@ module.exports = {
     }]
   },
   plugins: [
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js')
-    })
+    new HtmlWebpackPlugin({
+      title: "Todo PWA",
+      template: "src/index.ejs"
+    }),
+    new OfflinePlugin()
   ]
 };
