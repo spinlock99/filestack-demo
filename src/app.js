@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 import reducer from "./reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import { TodoList } from "./components";
+import db from "./db";
 
 export class App extends Component {
   configureStore() {
-    const store = createStore(
-      reducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    );
+    const store = createStore(reducer, applyMiddleware(thunk));
 
     if (module.hot) {
       module.hot.accept("./reducer", () => {
@@ -19,6 +18,15 @@ export class App extends Component {
         store.replaceReducer(nextRootReducer);
       });
     }
+
+    db.table("todos").toArray().then(todos => {
+      todos.forEach(todo => {
+        store.dispatch({
+          type: "ADD_TODO",
+          payload: todo
+        });
+      });
+    });
 
     return store;
   }
