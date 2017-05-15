@@ -6,7 +6,7 @@ import reducer from "./reducer";
 import db from "./db";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
-import { TodoList } from "./components";
+import ReactFilestack from "react-filestack";
 
 export class App extends Component {
   configureStore() {
@@ -20,25 +20,7 @@ export class App extends Component {
       });
     }
 
-    db.table("todos").toArray().then(todos => {
-      todos.forEach(todo => {
-        store.dispatch({
-          type: "ADD_TODO",
-          payload: todo
-        });
-      });
-    });
-
     return store;
-  }
-
-  getData(event) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      console.log(this.responseText);
-    }
-    xhttp.open("GET", "README.txt", true);
-    xhttp.send();
   }
 
   render() {
@@ -48,12 +30,15 @@ export class App extends Component {
         <MuiThemeProvider>
           <div>
             <AppBar
-              title="Todo PWA"
+              title="Filestack Demo"
               iconClassNameRight={icon}
-              onLeftIconButtonTouchTap={this.getData}
               zDepth={1}
             />
-            <TodoList />
+            <ReactFilestack
+              apikey="A4Y1A84HjTJmetKUHB7kBz"
+              buttonText="Filestack Demo"
+              onSuccess={() => alert("success")}
+            />
           </div>
         </MuiThemeProvider>
       </Provider>

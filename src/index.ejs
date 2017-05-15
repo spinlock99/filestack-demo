@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-8796553430739210",
-        enable_page_level_ads: true
-      });
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="manifest" href="<%= `${webpackConfig.output.publicPath}manifest.json` %>">
     <link rel="apple-touch-icon" href="<%= `${webpackConfig.output.publicPath}/todo.png` %>">
-    <meta name="apple-mobile-web-app-title" content="TodoPWA">
+    <meta name="apple-mobile-web-app-title" content="Filestack Demo">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   </head>
   <body>
-    <!--
     <div id="container"></div>
-    -->
-    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-    <script>
-        var client = filestack.init('A4Y1A84HjTJmetKUHB7kBz');
-        function showPicker() {
-            client.pick({
-            }).then(function(result) {
-                console.log(JSON.stringify(result.filesUploaded))
-            });
-        }
-    </script>
-    <input type="button" value="Upload" onclick="showPicker()" />
   </body>
 </html>
