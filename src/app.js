@@ -6,6 +6,7 @@ import reducer from "./reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import ReactFilestack from "react-filestack";
+import { config } from "../config";
 
 export class App extends Component {
   configureStore() {
@@ -34,7 +35,7 @@ export class App extends Component {
               zDepth={1}
             />
             <ReactFilestack
-              apikey="A4Y1A84HjTJmetKUHB7kBz"
+              apikey={config.filestackKey}
               buttonText="Filestack Demo"
               onSuccess={() => alert("success")}
             />
