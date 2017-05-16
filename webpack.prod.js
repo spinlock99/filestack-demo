@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "docs"),
     filename: "bundle.js",
-    publicPath: "/todo-pwa/"
+    publicPath: "/filestack-demo/"
   },
   module: {
     loaders: [{
@@ -31,7 +31,7 @@ module.exports = {
       { from: "manifest.json" }
     ]),
     new HtmlWebpackPlugin({
-      title: "Todo PWA",
+      title: "Filestack Demo",
       template: "src/index.ejs"
     }),
     new OfflinePlugin()
