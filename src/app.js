@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
+import RaisedButton from "material-ui/RaisedButton";
 import ReactFilestack from "react-filestack";
 import { config } from "../config";
 
@@ -38,6 +39,14 @@ export class App extends Component {
               apikey={config.filestackKey}
               buttonText="Filestack Demo"
               onSuccess={() => alert("success")}
+              render={({ onPick }) => (
+                <div style={{ marginTop: "40vh", textAlign: "center" }}>
+                  <RaisedButton
+                    label="Upload a File"
+                    onClick={onPick}
+                  />
+                </div>
+              )}
             />
           </div>
         </MuiThemeProvider>
